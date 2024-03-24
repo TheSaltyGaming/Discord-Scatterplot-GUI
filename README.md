@@ -13,7 +13,8 @@ Either download the .py file and run it with python, or [download the .exe file]
 ## Usage
 
 1. Download your discord data from the discord app and unzip it!
-2. Open the app.
+2. Open the app and follow the instructions.
+3. After clicking run, you should find the out.PNG/SVG file in the same folder as the .exe file (or .py file if you ran the script yourself).
 
 ## How to download your discord data
 1. Open discord
