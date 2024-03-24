@@ -2,14 +2,16 @@
 
 This is a simple GUI for [adryd235's discord scatter plot](https://gist.github.com/adryd325/f811e975bf8240fb6e6555e57c3db7d2) that allows you to create a scatterplot from your discord messages.
 
+
+
 ## Installation
 
-Either download the .py file and run it with python, or download the .exe file and run it.
+Either download the .py file and run it with python, or [download the .exe file](https://github.com/TheSaltyGaming/Discord-Scatterplot-GUI/releases) and run it.
 
 ## Usage
 
 1. Download your discord data from the discord app and unzip it!
-2. Open the app and follow the instructions.
+2. Open the app.
 
 ## How to download your discord data
 1. Open discord

@@ -180,7 +180,7 @@ dark_mode_checkbox.pack(pady=0)
 color_button_frame = tk.Frame(root_window, bg=bg_color)
 color_button_frame.pack(pady=10)  # Add vertical padding
 
-color_button = customtkinter.CTkButton(color_button_frame, text="Select Dark Mode Dot Color", command=select_dark_mode_color)
+color_button = customtkinter.CTkButton(color_button_frame, text="Select Dark Mode Dot Color (Optional)", command=select_dark_mode_color)
 color_button.grid(row=0, column=0)  # Place the button in the grid
 
 label = customtkinter.CTkLabel(root_window, text="Select the filetype you'd like to save the image as")
