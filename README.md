@@ -19,7 +19,7 @@ Either download the .py file and run it with python, or download the .exe file a
 5. Request your data and wait for the email. This might take a week or two.
 6. Download the data and unzip it
 
-### Help, windows defender detects the .exe as a virus!
+## Help, windows defender detects the .exe as a virus!
 This is a common issue with pyinstaller which I used to compile the exe file. You can either run the .py file or add an exception to the .exe file. It is completely harmless
 
 ## Credits:
