@@ -29,3 +29,6 @@ This is a common issue with pyinstaller which I used to compile the exe file. Yo
 ## Credits:
 - [adryd235 for the initial code](https://gist.github.com/adryd325/f811e975bf8240fb6e6555e57c3db7d2)
 - [Tanger for wanting a shiny GUI (and for making banger music)](https://x.com/tangermusic/status/1770097759174963269?s=20)
+
+## Issues: 
+- If you have any issues, please open an issue on this repository or contact me on [twitter](https://twitter.com/1KDVD)
