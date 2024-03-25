@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 
-from datetime import datetime, timedelta, timezone
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
 import json
 import os
-import matplotlib.backends.backend_svg
-
 import tkinter as tk
-import customtkinter
-from customtkinter import StringVar
+from datetime import datetime
 from tkinter import filedialog, colorchooser
 from tkinter import messagebox
+import matplotlib.backends.backend_svg
+
+import customtkinter
+import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
 
 # User parameters
 root = os.path.dirname(os.path.realpath(__file__))
@@ -19,7 +18,6 @@ yourNameHere = "@USERNAMEHERE"
 renderHorizontal = True
 
 dark_mode_dot_color = 'yellow'  # Default color for dark mode
-
 
 
 def select_directory():
@@ -61,7 +59,6 @@ def file_type_callback(choice):
 
 
 def run_code():
-
     global yourNameHere
     yourNameHere = username_entry.get()
     dates = []
@@ -197,10 +194,12 @@ def create_heatmap(dates):
     # Save the heatmap to a file instead of displaying it
     if file_type_var.get() == "PNG":
         plt.savefig('heatmap.png', bbox_inches='tight', pad_inches=0.3, dpi=300)
-        messagebox.showinfo("Success", "PNG file created. Look for heatmap.png in the same folder you ran this exe file in")
+        messagebox.showinfo("Success",
+                            "PNG file created. Look for heatmap.png in the same folder you ran this exe file in")
     else:  # file_type_var.get() == "SVG"
         plt.savefig('heatmap.svg', bbox_inches='tight', pad_inches=0.3)
-        messagebox.showinfo("Success", "SVG file created. Look for heatmap.svg in the same folder you ran this exe file in")
+        messagebox.showinfo("Success",
+                            "SVG file created. Look for heatmap.svg in the same folder you ran this exe file in")
 
 
 root_window = customtkinter.CTk()
@@ -213,7 +212,6 @@ bg_color = root_window.cget('bg')
 file_type_var = customtkinter.StringVar(value="PNG")
 plot_type_var = tk.StringVar(value="Scatterplot")
 
-
 header_label = customtkinter.CTkLabel(root_window, text="Discord Scatter plot maker", font=("Arial", 24, 'bold'))
 header_label.grid(pady=10)  # Add vertical padding
 
@@ -222,7 +220,6 @@ label.grid(pady=0)  # Add vertical padding
 
 username_entry = customtkinter.CTkEntry(root_window)
 username_entry.grid(pady=10)  # Add vertical padding
-
 
 label = customtkinter.CTkLabel(root_window, text="Please select your messages folder here")
 label.grid(pady=10)  # Add vertical padding
@@ -238,17 +235,20 @@ label = customtkinter.CTkLabel(root_window, text="Select the plot type")
 label.grid(pady=0)  # Add vertical padding
 
 # Create the dropdown menu to select plot type
-plot_type_dropdown = customtkinter.CTkOptionMenu(root_window, values=["Scatterplot", "Heatmap"], command=update_dark_mode_visibility, variable=plot_type_var)
+plot_type_dropdown = customtkinter.CTkOptionMenu(root_window, values=["Scatterplot", "Heatmap"],
+                                                 command=update_dark_mode_visibility, variable=plot_type_var)
 plot_type_dropdown.grid(pady=10)
 
 dark_mode_var = tk.BooleanVar()  # Create a BooleanVar to hold the state of the checkbox
-dark_mode_checkbox = customtkinter.CTkCheckBox(root_window, text="Dark Mode", variable=dark_mode_var, command=update_color_button_visibility)
+dark_mode_checkbox = customtkinter.CTkCheckBox(root_window, text="Dark Mode", variable=dark_mode_var,
+                                               command=update_color_button_visibility)
 dark_mode_checkbox.grid(pady=10)
 
 color_button_frame = tk.Frame(root_window, bg=bg_color)
 color_button_frame.grid()
 
-color_button = customtkinter.CTkButton(color_button_frame, text="Select Dark Mode Dot Color (Optional)", command=select_dark_mode_color)
+color_button = customtkinter.CTkButton(color_button_frame, text="Select Dark Mode Dot Color (Optional)",
+                                       command=select_dark_mode_color)
 color_button.grid(row=0, column=0)
 
 label = customtkinter.CTkLabel(root_window, text="Select the filetype you'd like to save the image as")
@@ -258,7 +258,6 @@ file_type_dropdown = customtkinter.CTkOptionMenu(root_window, values=["PNG", "SV
                                                  command=file_type_callback,
                                                  variable=file_type_var)
 file_type_dropdown.grid(pady=10)
-
 
 run_button = customtkinter.CTkButton(root_window, text="Run", command=run_code)
 run_button.grid(pady=10)  # Add vertical padding
