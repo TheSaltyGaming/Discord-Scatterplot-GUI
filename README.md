@@ -1,10 +1,11 @@
 # Discord-Scatterplot-GUI
 
-This is a simple GUI for [adryd235's discord scatter plot](https://gist.github.com/adryd325/f811e975bf8240fb6e6555e57c3db7d2) that allows you to create a scatterplot from your discord messages.
+This is a simple GUI for [adryd235's discord scatter plot](https://gist.github.com/adryd325/f811e975bf8240fb6e6555e57c3db7d2) that allows you to create a scatterplot from your discord messages. **Now features the ability to make heatmaps!!!**
 
 ![](C:\Users\Ander\Downloads\Skjermbilde%202024-03-24%20165446.png)
 
-<img width="446" alt="ScatterplotGUI" src="https://github.com/TheSaltyGaming/Discord-Scatterplot-GUI/assets/38183890/552fe68f-9525-4c28-9da9-39be77b2d3e0">
+<img width="482" alt="ScatterplotGUI" src="https://github.com/TheSaltyGaming/Discord-Scatterplot-GUI/assets/38183890/89f36ec1-0564-47c5-9099-ea46cf1a5f2b">
+
 
 ## Installation
 
