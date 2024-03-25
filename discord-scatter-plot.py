@@ -7,6 +7,7 @@ from datetime import datetime
 from tkinter import filedialog, colorchooser
 from tkinter import messagebox
 import matplotlib.backends.backend_svg
+from collections import defaultdict
 
 import customtkinter
 import matplotlib.dates as mdates
@@ -100,9 +101,11 @@ def run_code():
         times.append(timeNoDate)
 
     if plot_type_var.get() == "Scatterplot":
-        create_scatterplot(days, times, yourNameHere)
-    else:  # plot_type_var.get() == "Heatmap"
+        create_scatterplot(dates, yourNameHere)
+    elif plot_type_var.get() == "Heatmap":
         create_heatmap(dates)
+    elif plot_type_var.get() == "Graph":
+        plot_messages_over_years(dates)
 
 
 def create_scatterplot(days, times, yourNameHere):
@@ -202,6 +205,43 @@ def create_heatmap(dates):
                             "SVG file created. Look for heatmap.svg in the same folder you ran this exe file in")
 
 
+def plot_messages_over_years(dates):
+    global yourNameHere
+    yourNameHere = username_entry.get()
+
+    print(f"total messages: {len(dates)}")
+
+    if not dates:
+        messagebox.showerror("Error", "Wrong folder selected. Make sure you selected the messages folder")
+        return
+
+    # Group messages by month
+    messages_by_month = defaultdict(int)
+    for date in dates:
+        year_month = (date.year, date.month)
+        messages_by_month[year_month] += 1
+
+    # Sort the months and their corresponding message counts
+    months, message_counts = zip(*sorted(messages_by_month.items()))
+
+    # Convert the (year, month) tuples to datetime objects for plotting
+    months = [datetime(year, month, 1) for year, month in months]
+
+    # Plot the number of messages for each month
+    plt.plot(months, message_counts)
+    plt.xlabel('Month')
+    plt.ylabel('Number of Messages')
+    plt.title(f"Number of Messages Posted by {yourNameHere} on Discord Over the Months")
+
+    # Save the plot to a file instead of displaying it
+    if file_type_var.get() == "PNG":
+        plt.savefig('graph.png', bbox_inches='tight', pad_inches=0.3, dpi=300)
+        messagebox.showinfo("Success", "PNG file created. Look for graph.png in the same folder you ran this exe file in")
+    else:  # file_type_var.get() == "SVG"
+        plt.savefig('graph.svg', bbox_inches='tight', pad_inches=0.3)
+        messagebox.showinfo("Success", "SVG file created. Look for graph.svg in the same folder you ran this exe file in")
+
+
 root_window = customtkinter.CTk()
 root_window.title("Discord Scatter Plot Maker")
 root_window.geometry('650x550')
@@ -235,7 +275,7 @@ label = customtkinter.CTkLabel(root_window, text="Select the plot type")
 label.grid(pady=0)  # Add vertical padding
 
 # Create the dropdown menu to select plot type
-plot_type_dropdown = customtkinter.CTkOptionMenu(root_window, values=["Scatterplot", "Heatmap"],
+plot_type_dropdown = customtkinter.CTkOptionMenu(root_window, values=["Scatterplot", "Heatmap", "Graph"],
                                                  command=update_dark_mode_visibility, variable=plot_type_var)
 plot_type_dropdown.grid(pady=10)
 
