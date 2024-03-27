@@ -3,7 +3,7 @@
 import json
 import os
 import tkinter as tk
-from datetime import datetime
+from datetime import datetime, timezone
 from tkinter import filedialog, colorchooser
 from tkinter import messagebox
 import matplotlib.backends.backend_svg
@@ -81,7 +81,7 @@ def run_code():
 
     print(f"total messages: {len(dates)}")
 
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
 
     days = []
     times = []
@@ -101,14 +101,14 @@ def run_code():
         times.append(timeNoDate)
 
     if plot_type_var.get() == "Scatterplot":
-        create_scatterplot(dates, yourNameHere)
+        create_scatterplot(days, times, yourNameHere)
     elif plot_type_var.get() == "Heatmap":
         create_heatmap(dates)
     elif plot_type_var.get() == "Graph":
         plot_messages_over_years(dates)
 
-
 def create_scatterplot(days, times, yourNameHere):
+    plt.close('all')
     print("processing graph")
     if dark_mode_var.get():
         plt.style.use('dark_background')
@@ -161,6 +161,7 @@ def create_scatterplot(days, times, yourNameHere):
 
 
 def create_heatmap(dates):
+    plt.close('all')
     # Initialize a 2D array with zeros
     data = [[0 for _ in range(24)] for _ in range(7)]
 
@@ -206,6 +207,7 @@ def create_heatmap(dates):
 
 
 def plot_messages_over_years(dates):
+    plt.close('all')
     global yourNameHere
     yourNameHere = username_entry.get()
 
